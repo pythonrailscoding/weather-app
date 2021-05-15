@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <title>WeatherApp!</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+  <nav class="row" style="background: grey; color: white;">
+    <div align="center"><h1 class="col-md-3 text-center">Weather Detector</h1></div>
+  </nav>
+  <br />
+  <br />
+  <center class="row">
+    <form action="" method="post" class="col-md-6 col-md-offset-3">
+      {% csrf_token %}
+      <div class="input-group">
+        <input type="text" class="form-control" name="city" placeholder="Search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+        <form>
+  </center>
+  {% if data %}
+  <div class="container">
+      <br/>
+  
+  
+    
+    
+        <section class="card">
+      <h1 class="card-header">{{city | title}}</h1>
+      <div class="container">
+      <h3>Country Code : {{data.country_code}}</h3>
+        <h5><b>Coordinates:</b> {{data.coordinates}}</h5>
+        <p><h5><b>Temperature(in SI units):</b> {{ data.temp }} Kelvin</h5>
+            <h5 id="cel"></h5>
+             <h5 id="far"></h5>
+        
+        <h5><b>Pressure:</b> {{data.pressure}} hPa</h5>
+        <h5><b>Humidity:</b> {{data.humidity}} %</h5>
+        <input type="hidden" id = "kel" value="{{ data.temp }}">
+        
+<script type="text/javascript">
+    var k = parseFloat(document.getElementById('kel').value);
+    var cel = parseInt(k - 273);
+    var faren = parseInt(((cel*9)/5) + 32);
+    document.getElementById("cel").innerHTML = '<b>Temperature(in degree Celcius)</b>: ' + cel + ' C';
+    document.getElementById("far").innerHTML = '<b>Temperature(in Fahrenheit)</b>: ' + faren + ' F';
+    </script>
+
+    
+    </div>
+    </section>
+  </div>
+</div>
+{% else %}
+<br/>
+<center><h4><b>You searched for Nothing!</b></h4></center>
+{% endif %}
+</div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+</html>
