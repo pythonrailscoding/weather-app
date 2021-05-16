@@ -29,7 +29,7 @@
     <form action="" method="post" class="col-md-6 col-md-offset-3">
       {% csrf_token %}
       <div class="input-group">
-        <input type="text" class="form-control" name="city" placeholder="Search">
+        <input type="text" class="form-control" name="city" placeholder="Search... Type '%20' for spacing. Like New%20Delhi">
         <div class="input-group-btn">
           <button class="btn btn-default" type="submit">
             <i class="glyphicon glyphicon-search"></i>
@@ -44,9 +44,11 @@
   
     
     
-        <section class="card">
-      <h1 class="card-header">{{city | title}}</h1>
-      <div class="container">
+        <section class="jumbotron">
+          <div class="container">
+            
+            
+      <h2>{{data.city_name | title}}</h2><hr>
       <h3>Country Code : {{data.country_code}}</h3>
         <h5><b>Coordinates:</b> {{data.coordinates}}</h5>
         <p><h5><b>Temperature(in SI units):</b> {{ data.temp }} Kelvin</h5>
@@ -55,6 +57,7 @@
         
         <h5><b>Pressure:</b> {{data.pressure}} hPa</h5>
         <h5><b>Humidity:</b> {{data.humidity}} %</h5>
+        <h5><b>Condition: </b>{{ data.description }} <img src="{{ data.icon }}" height="50" width="50"></h5>
         <input type="hidden" id = "kel" value="{{ data.temp }}">
         
 <script type="text/javascript">
