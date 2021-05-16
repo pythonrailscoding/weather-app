@@ -17,7 +17,7 @@ def index(request):
                 "temp": str(json_data['main']['temp']),
                 "pressure": str(json_data['main']['pressure']),
                 "humidity": str(json_data['main']['humidity']),
-                "description": json_data["weather"][0]["main"],
+                "description": json_data["weather"][0]["description"],
                 "icon": "http://openweathermap.org/img/w/"+json_data["weather"][0]["icon"]+".png",
                 }
             

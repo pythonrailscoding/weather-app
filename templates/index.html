@@ -57,7 +57,7 @@
         
         <h5><b>Pressure:</b> {{data.pressure}} hPa</h5>
         <h5><b>Humidity:</b> {{data.humidity}} %</h5>
-        <h5><b>Condition: </b>{{ data.description }} <img src="{{ data.icon }}" height="50" width="50"></h5>
+        <h5><b>Condition: </b>{{ data.description | title}} <img src="{{ data.icon }}" height="50" width="50"></h5>
         <input type="hidden" id = "kel" value="{{ data.temp }}">
         
 <script type="text/javascript">
